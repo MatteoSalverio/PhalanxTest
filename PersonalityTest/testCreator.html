@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phalanx Test Creator</title>
+    <link rel="icon" href="favicon.png">
+    <style>
+        html,
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: darkslateblue;
+            color: aliceblue;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: cyan;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 10px;
+            border: solid 1px black;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            filter: brightness(120%);
+        }
+
+        .panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 50%;
+            transform: translate(-50%, -50%);
+            border: solid 10px black;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: darkslategray;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        select,
+        input {
+            font-size: 18px;
+            padding: 5px;
+            max-width: 100%;
+            border: solid 1px black;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+
+        .exitButton {
+            background-color: tomato;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-decoration: underline;">Phalanx Test Creator</h1>
+    <br>
+    <button onclick="createCategory()" style="background-color: violet;">Create Category</button>
+    <button onclick="togglePopup('createQuestion')" style="background-color: orange;">Create Question</button>
+    <button onclick="togglePopup('delete')" style="background-color: tomato;">Delete...</button>
+    <button onclick="save()" style="background-color: lightgreen;">Save</button>
+    <button onclick="togglePopup('load')" style="background-color: deepskyblue;">Load</button>
+    <br><br>
+    <hr><br>
+
+    <div id="createQuestion" class="panel" style="visibility: hidden;">
+        <button class="exitButton" onclick="togglePopup('createQuestion')">X</button>
+        <h1>Create Question</h1>
+        <br>
+        <label>Category:</label>
+        <select id="categorySelect"></select>
+        <br><br>
+        <label>Question:</label>
+        <input type="text" id="questionInput">
+        <br><br>
+        <label>Worth:</label>
+        <select id="worthSelect">
+            <option value="+">Positive</option>
+            <option value="-">Negative</option>
+        </select>
+        <br><br><br>
+        <button onclick="createQuestion()" style="background-color: lightgreen;">Create</button>
+    </div>
+
+    <div id="load" class="panel" style="visibility: hidden;">
+        <button class="exitButton" onclick="togglePopup('load')">X</button>
+        <h1>Load</h1>
+        <br>
+        <input type="file" id="loadFile"></input>
+    </div>
+
+    <div id="delete" class="panel" style="visibility: hidden;">
+        <button class="exitButton" onclick="togglePopup('delete')">X</button>
+        <h1>Delete</h1>
+        <br>
+        <label>Type to Delete: </label>
+        <select class="updater" id="deleteOption">
+            <option value="category">Category</option>
+            <option value="question">Question</option>
+        </select>
+        <br><br>
+        <label>Category: </label>
+        <select id="deleteCategorySelect"></select>
+        <br><br>
+        <label>Question: </label>
+        <select id="deleteQuestionSelect"></select>
+        <br><br>
+        <button onclick="remove()" style="background-color: tomato;">Delete</button>
+    </div>
+
+    <p id="output"></p>
+
+    <script>
+        const categorySelect = document.getElementById("categorySelect");
+        var categories = [];
+        var dataList = "";
+
+        class category {
+            constructor(name) {
+                this.name = name;
+                this.questions = [];
+                categories.push(this);
+            }
+
+            addQuestion(questionVar, worth) {
+                this.questions.push(new question(questionVar, worth));
+            }
+        }
+        class question {
+            constructor(question, worth) {
+                this.question = question;
+                this.worth = worth;
+            }
+        }
+
+        function print(text) {
+            document.getElementById("output").innerHTML += "<br>" + text;
+        }
+
+        function createCategory() {
+            new category(prompt("What is the category name?"));
+            update();
+        }
+
+        function createQuestion() {
+            let found = false;
+            for (let i = 0; i < categories.length; i++) {
+                if (categories[i].name == document.getElementById("categorySelect").value) {
+                    categories[i].addQuestion(
+                        document.getElementById("questionInput").value,
+                        document.getElementById("worthSelect").value
+                    );
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                print("<span style='color: red;'>Error: Category '" + document.getElementById("categorySelect").value + "' not found!</span>");
+            togglePopup("createQuestion");
+            update();
+        }
+
+        function printAllData() {
+            document.getElementById("output").innerHTML = "";
+            for (let i = 0; i < categories.length; i++) {
+                print("<span style='font-weight: bold; color: cyan;'>" + categories[i].name + ":" + "</span>");
+                for (let j = 0; j < categories[i].questions.length; j++)
+                    print(categories[i].questions[j].question + " (" + categories[i].questions[j].worth + ")");
+                print("<br>");
+            }
+        }
+
+        function togglePopup(popupId) {
+            if (document.getElementById(popupId).style.visibility == "hidden")
+                document.getElementById(popupId).style.visibility = "unset";
+            else
+                document.getElementById(popupId).style.visibility = "hidden";
+        }
+
+        function save() {
+            dataList.categories = [];
+            let index = 1;
+            for (let i = 0; i < categories.length; i++) {
+                let questions = [];
+                for (let j = 0; j < categories[i].questions.length; j++) {
+                    questions.push({
+                        "index": index,
+                        "question": categories[i].questions[j].question,
+                        "worth": categories[i].questions[j].worth,
+                        "answer": "none"
+                    });
+                    index++;
+                }
+                dataList.categories.push({
+                    "name": categories[i].name,
+                    "questions": questions,
+                    "score": 0
+                });
+            }
+            data = JSON.stringify(dataList);
+            downloadToFile(data, "PhalanxTest.json", "text/plain")
+        }
+        const downloadToFile = (content, filename, contentType) => {
+            const a = document.createElement('a');
+            const file = new Blob([content], { type: contentType });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        };
+
+        document.getElementById("loadFile").addEventListener("change", function (e) {
+            var reader = new FileReader();
+            reader.onload = onReaderLoad;
+            reader.readAsText(e.target.files[0]);
+        });
+        function onReaderLoad(event) {
+            try {
+                var obj = JSON.parse(event.target.result);
+                dataList = obj;
+                loadTest();
+            }
+            catch {
+                alert("ERROR: The file you have uploaded is not a Phalanx Test!");
+            }
+        }
+
+        function loadTest() {
+            categories = [];
+            for (let i = 0; i < dataList.categories.length; i++) {
+                new category(dataList.categories[i].name);
+                for (let j = 0; j < dataList.categories[i].questions.length; j++) {
+                    categories[i].addQuestion(dataList.categories[i].questions[j].question, dataList.categories[i].questions[j].worth);
+                }
+            }
+            update();
+        }
+
+        function remove() {
+            for (let i = 0; i < categories.length; i++) {
+                if (categories[i].name == document.getElementById("deleteCategorySelect").value) {
+                    if (document.getElementById("deleteOption").value == "category") {
+                        categories.splice(i, 1);
+                        update();
+                        return;
+                    }
+                    else {
+                        for (let j = 0; j < categories[i].questions.length; j++) {
+                            if (document.getElementById("deleteQuestionSelect").value == categories[i].questions[j].question) {
+                                categories[i].questions.splice(j, 1);
+                                update();
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function update() {
+            categorySelect.innerHTML = "";
+            document.getElementById("deleteCategorySelect").innerHTML = "";
+            document.getElementById("deleteQuestionSelect").innerHTML = "";
+            for (let i = 0; i < categories.length; i++) {
+                categorySelect.innerHTML += "<option value='" + categories[i].name + "'>" + categories[i].name + "<option>";
+                document.getElementById("deleteCategorySelect").innerHTML += "<option value='" + categories[i].name + "'>" + categories[i].name + "<option>";
+            }
+
+            if (document.getElementById("deleteOption").value == "category")
+                document.getElementById("deleteQuestionSelect").style.opacity = "20%";
+            else {
+                document.getElementById("deleteQuestionSelect").style.opacity = "100%";
+            }
+
+            for (let i = 0; i < categories.length; i++) {
+                if (categories[i].name == document.getElementById("deleteCategorySelect").value) {
+                    for (let j = 0; j < categories[i].questions.length; j++) {
+                        document.getElementById("deleteQuestionSelect").innerHTML += "<option value='" + categories[i].questions[j].question + "'>" + categories[i].questions[j].question + "<option>";
+                    }
+                    break;
+                }
+            }
+
+            printAllData();
+        }
+
+        let updaters = document.getElementsByClassName("updater");
+        for (let i = 0; i < updaters.length; i++)
+            updaters[i].addEventListener("change", function (e) { update() });
+        document.getElementById("deleteCategorySelect").addEventListener("change", function (e) {
+            document.getElementById("deleteQuestionSelect").innerHTML = "";
+            for (let i = 0; i < categories.length; i++) {
+                if (categories[i].name == document.getElementById("deleteCategorySelect").value) {
+                    for (let j = 0; j < categories[i].questions.length; j++) {
+                        document.getElementById("deleteQuestionSelect").innerHTML += "<option value='" + categories[i].questions[j].question + "'>" + categories[i].questions[j].question + "<option>";
+                    }
+                    break;
+                }
+            }
+        });
+
+        function onlineStart() { //For if the site is on a server (or VSCode Live Server)
+            fetch('template.json')
+                .then(response => response.text())
+                .then(data => {
+                    dataList = JSON.parse(data);
+                    /*let test = new category("Test Category");
+                    test.addQuestion("Is this working?", "+");
+                    test.addQuestion("I hope it is", "-");
+                    let test2 = new category("Another Test Category");
+                    test2.addQuestion("Maybe it is?", "+");
+                    test2.addQuestion("I am not sure", "-");*/
+                    update();
+                })
+                .catch(err => {
+                    console.clear();
+                    console.error("Error: Cannot Access Online Template");
+                    alert("NOTICE: Phalanx Test Creator is meant to be run on an online website. It will now run in offline mode")
+                    offlineStart();
+                });
+        }
+
+        onlineStart();
+    </script>
+</body>
+
+</html>
