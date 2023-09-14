@@ -1,0 +1,499 @@
+{
+    "testName": "Phalanx Leadership Assessment",
+    "testDescription": "This is a 10-15 minute assessment that individually tests for a variety of predetermined traits. These traits reflect a person's innate leadership qualities and potential. <br><br> Please answer to the best of your ability and avoid leaving any questions blank, as blank answers will provide an inaccurate score. <br><br> If you have any questions or concerns, please reach out to <br> <a href='mailto:shs7782@g.harvard.edu' style='text-decoration: none;'>shs7782@g.harvard.edu</a>. <br> Thank you! <br><br><br><br> Please select the option that you most agree with for the following statements.",
+    "perspective": "both",
+    "categories": [
+        {
+            "name": "Integrity/Honesty",
+            "questions": [
+                {
+                    "index": 1,
+                    "question": "I am trusted to keep secrets.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 2,
+                    "question": "I lie to get myself out of trouble.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 3,
+                    "question": "I believe that honesty is the basis for trust.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Social",
+            "questions": [
+                {
+                    "index": 4,
+                    "question": "I don't know how to handle myself in a new social situation.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 5,
+                    "question": "I get along well with people I have just met.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 6,
+                    "question": "I know what makes others tick.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Constant Improvement",
+            "questions": [
+                {
+                    "index": 7,
+                    "question": "I do just enough work to get by.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 8,
+                    "question": "I get started quickly on doing a job.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 9,
+                    "question": "I quickly lose interest in the tasks I start.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Courageous",
+            "questions": [
+                {
+                    "index": 10,
+                    "question": "I avoid dealing with awkward situations.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 11,
+                    "question": "I speak my mind freely even when there might be negative results.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Creativity",
+            "questions": [
+                {
+                    "index": 12,
+                    "question": "I have a vivid imagination.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 13,
+                    "question": "I have trouble guessing how others will react.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 14,
+                    "question": "I am full of ideas.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Curiosity",
+            "questions": [
+                {
+                    "index": 15,
+                    "question": "I am never bored.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 16,
+                    "question": "I have few interests.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 17,
+                    "question": "I find it difficult to entertain myself.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Fairness",
+            "questions": [
+                {
+                    "index": 18,
+                    "question": "I would not regret my behavior if I were to take advantage of someone impulsively.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 19,
+                    "question": "I would feel very bad, for a long time, if I were to steal from someone.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 20,
+                    "question": "I try to follow the rules.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Humor",
+            "questions": [
+                {
+                    "index": 21,
+                    "question": "I try to tease my friends out of their gloomy moods.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 22,
+                    "question": "I try to have fun in all kinds of situations.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 23,
+                    "question": "I do not go out of my way to make others smile or laugh.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Innovation",
+            "questions": [
+                {
+                    "index": 24,
+                    "question": "I come up with bold plans.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 25,
+                    "question": "I quickly think up new ideas.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Personal Balance",
+            "questions": [
+                {
+                    "index": 26,
+                    "question": "I let myself be taken over by urges to spend or eat too much.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 27,
+                    "question": "I do my tasks only just before they need to be done.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 28,
+                    "question": "I am a highly disciplined person.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Initiative",
+            "questions": [
+                {
+                    "index": 29,
+                    "question": "I get to work at once.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 30,
+                    "question": "I have difficulty starting tasks.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 31,
+                    "question": "I find it difficult to get down to work.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Resourceful",
+            "questions": [
+                {
+                    "index": 32,
+                    "question": "I can handle complex problems.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 33,
+                    "question": "I face problems directly.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 34,
+                    "question": "I am easily discouraged.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Respectful",
+            "questions": [
+                {
+                    "index": 35,
+                    "question": "I back out at the last moment.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 36,
+                    "question": "I cut conversations short.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 37,
+                    "question": "I do a lot in my spare time.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Wisdom",
+            "questions": [
+                {
+                    "index": 38,
+                    "question": "I have a broad outlook on what is going on.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 39,
+                    "question": "I am rarely consulted for advice by others.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 40,
+                    "question": "I am not good at figuring out what really matters.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Empathy",
+            "questions": [
+                {
+                    "index": 41,
+                    "question": "I don't have a soft side.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 42,
+                    "question": "I treat people as inferiors.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 43,
+                    "question": "I anticipate the needs of others.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Forgiveness",
+            "questions": [
+                {
+                    "index": 44,
+                    "question": "I find it hard to forgive others.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 45,
+                    "question": "I am able to be professional with people I dislike.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 46,
+                    "question": "I get back at people who insult me.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Confidence",
+            "questions": [
+                {
+                    "index": 47,
+                    "question": "I like to act on a whim.",
+                    "worth": "-",
+                    "answer": "none"
+                },
+                {
+                    "index": 48,
+                    "question": "I choose my words with care.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 49,
+                    "question": "I make rash decisions.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Judgment",
+            "questions": [
+                {
+                    "index": 50,
+                    "question": "I make decisions only after I have all of the facts.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 51,
+                    "question": "I am valued by others for my objectivity.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 52,
+                    "question": "I don't think about different possibilities when making decisions.",
+                    "worth": "-",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Other",
+            "questions": [
+                {
+                    "index": 53,
+                    "question": "I give actionable feedback to my team members that helps them improve their performance.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 54,
+                    "question": "I give the desired results to my team and let them figure out the best way to do it. I only direct \"how to do something\" if asked or if I see they are having difficulties.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 55,
+                    "question": "I care about my team members and I know the members of their family and what their hobbies are.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 56,
+                    "question": "I value the perspective of all team members even when it's different from my own. I have a method for letting the team know that I listen to what they say and why I might not choose a particular member's idea or approach.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 57,
+                    "question": "I keep the team focused on our priorities and I have a method for doing so.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 58,
+                    "question": "I regularly share relevant information from my manager and senior leaders.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 59,
+                    "question": "I have had a meaningful discussion with each of my team members in the last six months about their performance and career development.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 60,
+                    "question": "I communicate clear goals for the team and I have a method for doing so.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 61,
+                    "question": "I have the technical experience(e.g., coding in Tech, selling in Global Business, accounting in Finance) to effectively manage my team. If not, I am taking steps to ensure I learn those skills.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 62,
+                    "question": "My team would recommend me to other people in the company to work for or for higher levels of management.",
+                    "worth": "+",
+                    "answer": "none"
+                },
+                {
+                    "index": 63,
+                    "question": "My team is satisfied with my overall performance as a manager.",
+                    "worth": "+",
+                    "answer": "none"
+                }
+            ],
+            "score": 0
+        }
+    ]
+}

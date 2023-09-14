@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Creator</title>
+    <link rel="icon" href="favicon.png">
+    <style>
+        html,
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: darkslateblue;
+            color: aliceblue;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            color: cyan;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 10px;
+            border: solid 1px black;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            filter: brightness(120%);
+        }
+
+        .panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 50%;
+            transform: translate(-50%, -50%);
+            border: solid 10px black;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: darkslategray;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        select,
+        input,
+        textarea {
+            font-size: 18px;
+            padding: 5px;
+            max-width: 100%;
+            border: solid 1px black;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+
+        .exitButton {
+            background-color: tomato;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 4px 2px 3px 3px;
+        }
+
+        #testDescriptionInput {
+            position: relative;
+            top: 20px;
+            width: 50%;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-decoration: underline;">Test Creator</h1>
+    <br>
+    <button onclick="togglePopup('testSettings')" style="background-color: rgb(94, 222, 254);">Test Settings</button>
+    <button onclick="createCategory()" style="background-color: violet;">Create Category</button>
+    <button onclick="togglePopup('createQuestion')" style="background-color: orange;">Create Question</button>
+    <button onclick="togglePopup('delete')" style="background-color: tomato;">Delete...</button>
+    <button onclick="save()" style="background-color: lightgreen;">Save</button>
+    <button onclick="togglePopup('load')" style="background-color: deepskyblue;">Load</button>
+    <br><br>
+    <hr><br>
+
+    <div id="testSettings" class="panel" style="visibility: unset;">
+        <button class="exitButton" onclick="togglePopup('testSettings')">X</button>
+        <h1 style="color: aliceblue; text-decoration: underline;">Test Settings</h1>
+        <br>
+        <label>Test Name:</label>
+        <input id="testNameInput" type="text" placeholder="Rat Lab Test">
+        <br><br>
+        <label>Test Description:</label>
+        <textarea id="testDescriptionInput" type="text" placeholder="Describe your test here!"></textarea>
+        <br><br><br><br>
+        <label>Perspective:</label>
+        <select id="perspectiveSelect">
+            <option value="self">Self</option>
+            <option value="thirdPerson">Third Person</option>
+            <option value="both">Both</option>
+        </select>
+        <br><br><br>
+        <button onclick="applyTestSettings()" style="background-color: lightgreen;">Apply</button>
+    </div>
+
+    <div id="createQuestion" class="panel" style="visibility: hidden;">
+        <button class="exitButton" onclick="togglePopup('createQuestion')">X</button>
+        <h1>Create Question</h1>
+        <br>
+        <label>Category:</label>
+        <select id="categorySelect"></select>
+        <br><br>
+        <label>Question:</label>
+        <input type="text" id="questionInput">
+        <br><br>
+        <label>Worth:</label>
+        <select id="worthSelect">
+            <option value="+">Positive</option>
+            <option value="-">Negative</option>
+        </select>
+        <br><br><br>
+        <button onclick="createQuestion()" style="background-color: lightgreen;">Create</button>
+    </div>
+
+    <div id="load" class="panel" style="visibility: hidden;">
+        <button class="exitButton" onclick="togglePopup('load')">X</button>
+        <h1>Load</h1>
+        <br>
+        <input type="file" id="loadFile"></input>
+    </div>
+
+    <div id="delete" class="panel" style="visibility: hidden;">
+        <button class="exitButton" onclick="togglePopup('delete')">X</button>
+        <h1>Delete</h1>
+        <br>
+        <label>Type to Delete: </label>
+        <select class="updater" id="deleteOption">
+            <option value="category">Category</option>
+            <option value="question">Question</option>
+        </select>
+        <br><br>
+        <label>Category: </label>
+        <select id="deleteCategorySelect"></select>
+        <br><br>
+        <label>Question: </label>
+        <select id="deleteQuestionSelect"></select>
+        <br><br>
+        <button onclick="remove()" style="background-color: tomato;">Delete</button>
+    </div>
+
+    <p id="output"></p>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
