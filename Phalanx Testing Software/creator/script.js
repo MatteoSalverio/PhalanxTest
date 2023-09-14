@@ -6,11 +6,13 @@ class category {
     constructor(name) {
         this.name = name;
         this.questions = [];
+        this.flippedQuestions = [];
         categories.push(this);
     }
 
     addQuestion(questionVar, worth) {
         this.questions.push(new question(questionVar, worth));
+        this.flippedQuestions.push(new question(questionVar.replace("I ", "They ").replace("myself", "themself").replace("my", "their"), worth));
     }
 }
 class question {
@@ -74,6 +76,7 @@ function save() {
             questions.push({
                 "index": index,
                 "question": categories[i].questions[j].question,
+                "flipped": categories[i].flippedQuestions[j].question,
                 "worth": categories[i].questions[j].worth,
                 "answer": "none"
             });
@@ -198,7 +201,7 @@ function applyTestSettings() {
 }
 
 function onlineStart() { //For if the site is on a server (or VSCode Live Server)
-    fetch('../questions/template.json')
+    fetch('../tests/template.json')
         .then(response => response.text())
         .then(data => {
             dataList = JSON.parse(data);
@@ -211,7 +214,7 @@ function onlineStart() { //For if the site is on a server (or VSCode Live Server
             update();
         })
         .catch(err => {
-            console.clear();
+            //console.clear();
             console.error("Error: Cannot Access Online Template");
             alert("NOTICE: Phalanx Test Creator is meant to be run on an online website. It will now run in offline mode")
             offlineStart();

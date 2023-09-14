@@ -52,9 +52,17 @@ function createQuestion(question, id) { // Displays a question given it's text a
 function loadQuestions() {
     questionsDiv.innerHTML = "";
     // Creates and displays all questions from the dataList
-    for (let i = 0; i < dataList.categories.length; i++) {
-        for (let j = 0; j < dataList.categories[i].questions.length; j++)
-            createQuestion(dataList.categories[i].questions[j].question, dataList.categories[i].questions[j].index);
+    if (urlData.answerText == null) { // Checks to see if this is the main user or the second user
+        for (let i = 0; i < dataList.categories.length; i++) {
+            for (let j = 0; j < dataList.categories[i].questions.length; j++)
+                createQuestion(dataList.categories[i].questions[j].question, dataList.categories[i].questions[j].index);
+        }
+    }
+    else {
+        for (let i = 0; i < dataList.categories.length; i++) {
+            for (let j = 0; j < dataList.categories[i].questions.length; j++)
+                createQuestion(dataList.categories[i].questions[j].flipped, dataList.categories[i].questions[j].index);
+        }
     }
 
     // Handling answer buttons' actions
@@ -153,9 +161,39 @@ function getPoints(answerIndex, worth) {
     let positiveScores = [2, 1, 0, -1, -2];
     let negativeScores = [-2, -1, 0, 1, 2];
     if (worth == "+" || worth == "positive")
-        return positiveScores[answerIndex - 1]; // The -1 is because the buttons are labeled with the first index being 1, not 0
+        return positiveScores[answerIndex]; // The -1 is because the buttons are labeled with the first index being 1, not 0
     else
-        return negativeScores[answerIndex - 1];
+        return negativeScores[answerIndex];
+}
+
+let encodedAnswers = "asdfghjkl";
+function decodeAnswer(encodedAnswer) {
+    return encodedAnswers.indexOf(encodedAnswer);
+}
+function finish() {
+
+    let urlString = "";
+    for (let i = 0; i < dataList.categories.length; i++) {
+        for (let j = 0; j < dataList.categories[i].questions.length; j++) {
+            if (dataList.categories[i].questions[j].answer != "none")
+                urlString += encodedAnswers[(dataList.categories[i].questions[j].answer * 1) - 1];
+            else
+                urlString += encodedAnswers[2];
+        }
+    }
+    let originalAnswers = "";
+    if (urlData.answerText != null) {
+        originalAnswers = "?" + urlData.answerText;
+        document.getElementById("whatToDo").innerHTML = "You can now send the link back to the original tester and they will get to review their results.";
+    }
+    document.getElementById("sendUrlLink").innerHTML = window.location.href.substring(0, window.location.href.indexOf("?") - 1) + "/?" + urlData.testId + "?" + urlString + originalAnswers;
+    toggleElement("flippedExplanation");
+}
+
+function copyUrl() {
+    navigator.clipboard.writeText(document.getElementById("sendUrlLink").innerHTML);
+    document.getElementById("copyButton").innerHTML = "Link Copied";
+    document.getElementById("copyButton").style.backgroundColor = "rgb(51, 164, 116)";
 }
 
 var storedTestingPage = "";
@@ -163,55 +201,35 @@ var personalScores = [];
 var otherScores = [];
 // Calculates the final score for each category as a percentage
 function calculateScore() {
-    if (!flipped && dataList.perspective == "both") {
-        flip();
-        return;
-    }
-
     if (dataList.perspective == "both") {
+        let qNum = 1; // Counts total number of questions
+        let categoryScores = []; // Scores for each category
+        let originalCategoryScores = [];
+        let categoryPercents = []; // Stores the percentage calculation for each category
+        let originalCategoryPercents = [];
         for (let i = 0; i < dataList.categories.length; i++) {
-            qCount = 0; // Amount of questions in this category
+            categoryScores[i] = 0;
+            originalCategoryScores[i] = 0;
+            let categoryQuestionCount = 0; // Counts questions within this category
             for (let j = 0; j < dataList.categories[i].questions.length; j++) {
-                // Checking for blank answers
-                if (dataList.categories[i].questions[j].answer == "none") // If the user didn't answer a question
-                    dataList.categories[i].questions[j].answer = 3; // 3 is the middle option (neutral)
-                if (dataListPersonal.categories[i].questions[j].answer == "none")
-                    dataListPersonal.categories[i].questions[j].answer = 3;
-                // Getting the category scores
-                dataList.categories[i].score += getPoints(dataList.categories[i].questions[j].answer, dataList.categories[i].questions[j].worth); // Adds the score from this question to it's respective category's total score
-                dataListPersonal.categories[i].score += getPoints(dataListPersonal.categories[i].questions[j].answer, dataListPersonal.categories[i].questions[j].worth); // Adds the score from this question to it's respective category's total personal score
-                qCount++;
+                // Get answer values from the URL:
+                let originalAnswer = decodeAnswer(urlData.originalAnswerText[qNum - 1]); // "Your Results"
+                let answer = decodeAnswer(urlData.answerText[qNum - 1]); // "Other Person"
+                // Find the total score from each category:
+                categoryScores[i] += getPoints(answer, dataList.categories[i].questions[j].worth);
+                originalCategoryScores[i] += getPoints(originalAnswer, dataList.categories[i].questions[j].worth);
+                // Count the question:
+                qNum++;
+                categoryQuestionCount++;
             }
-            // Making the category scores into percentages
-            let score = Math.round(((dataList.categories[i].score + (qCount * 2)) / (qCount * 4)) * 100) + "%"; // Calculates the final percentage
-            let personalScore = Math.round(((dataListPersonal.categories[i].score + (qCount * 2)) / (qCount * 4)) * 100) + "%"; // Calculates the final personal percentage
-            // Adding the percentages to the final results table
-            document.getElementById("resultsTable").innerHTML += "<tr><td>" + dataList.categories[i].name + "</td><td>" + personalScore + "</td><td>" + score + "</td>";
+            // Calculate percentages:
+            categoryPercents[i] = Math.round(((categoryScores[i] + (categoryQuestionCount * 2)) / (categoryQuestionCount * 4)) * 100) + "%";
+            originalCategoryPercents[i] = Math.round(((originalCategoryScores[i] + (categoryQuestionCount * 2)) / (categoryQuestionCount * 4)) * 100) + "%";
+            // Add results to the table:
+            document.getElementById("resultsTable").innerHTML += "<tr><td>" + dataList.categories[i].name + "</td><td>" + originalCategoryPercents[i] + "</td><td>" + categoryPercents[i] + "</td>";
         }
 
-        toggleElement("mainTestPage");
-        storedTestingPage = document.getElementById("mainTestPage").innerHTML;
-        document.getElementById("mainTestPage").innerHTML = "";
-        toggleElement("scoringPage");
-        open("#title", "_self"); // Return to top of page
-    }
-    else {
-        for (let i = 0; i < dataList.categories.length; i++) {
-            qCount = 0; // Amount of questions in this category
-            for (let j = 0; j < dataList.categories[i].questions.length; j++) {
-                // Checking for blank answers
-                if (dataList.categories[i].questions[j].answer == "none") // If the user didn't answer a question
-                    dataList.categories[i].questions[j].answer = 3; // 3 is the middle option (neutral)
-                // Getting the category scores
-                dataList.categories[i].score += getPoints(dataList.categories[i].questions[j].answer, dataList.categories[i].questions[j].worth); // Adds the score from this question to it's respective category's total score
-                qCount++;
-            }
-            // Making the category scores into percentages
-            let score = Math.round(((dataList.categories[i].score + (qCount * 2)) / (qCount * 4)) * 100) + "%"; // Calculates the final percentage
-            // Adding the percentages to the final results table
-            document.getElementById("resultsTable").innerHTML += "<tr><td>" + dataList.categories[i].name + "</td><td>" + score + "</td><td>" + "null" + "</td>";
-        }
-
+        document.getElementById("titleDisplay").innerHTML = "Your Testing Results:"
         toggleElement("mainTestPage");
         storedTestingPage = document.getElementById("mainTestPage").innerHTML;
         document.getElementById("mainTestPage").innerHTML = "";
@@ -232,23 +250,32 @@ function autoComplete() {
     }
 }
 
-var testId = null;
-
+let urlData = {
+    testId: null,
+    answerText: null,
+    originalAnswerText: null
+}
 function onlineStart() { // For if the site is on a server (or VSCode Live Server)
-    testId = window.location.href.substring(window.location.href.indexOf("?") + 1);
-    console.log("Loading test '" + testId + "'");
-    if (window.location.href.indexOf("?") < 0 || testId == "" || testId == null) {
+    let urlVars = window.location.href.split("?")
+    urlData.testId = urlVars[1];
+    if (urlVars.length > 2 && urlVars[2] != "")
+        urlData.answerText = urlVars[2];
+    if (urlVars.length > 3 && urlVars[3] != "")
+        urlData.originalAnswerText = urlVars[3];
+
+    console.log("Loading test '" + urlData.testId + "'");
+    if (window.location.href.indexOf("?") < 0 || urlData.testId == "" || urlData.testId == null) {
         document.getElementById("titleDisplay").innerHTML = "Phalanx Testing Client";
         document.getElementById("welcomeMessage").innerHTML = "<span style=''>This page is blank, when you open a test, it will appear here.</span>";
         document.getElementById("descriptionDisplay").innerHTML = "To open a test, click the button below and input the ID of the test.";
         document.getElementById("finishButton").innerHTML = "Load Test From ID";
         document.getElementById("finishButton").onclick = function () {
-            testId = prompt("What is the ID of the test you would like to open?");
-            open(window.location.href + "?" + testId, "_self");
+            urlData.testId = prompt("What is the ID of the test you would like to open?");
+            open(window.location.href + "?" + urlData.testId, "_self");
         }
         return;
     }
-    loadTestFile(testId);
+    loadTestFile(urlData.testId);
 }
 
 function loadTestFile(testId) {
@@ -257,6 +284,10 @@ function loadTestFile(testId) {
         .then(data => {
             dataList = JSON.parse(data);
             loadQuestions();
+            if (urlData.originalAnswerText != null) {
+                calculateScore();
+                return;
+            }
             // Checks if the user is at a specific question and returns to the top when the page first loads
             if (window.location.href.indexOf("#") > -1)
                 window.location.href = (window.location.href.substring(0, window.location.href.indexOf("#")));
@@ -267,28 +298,6 @@ function loadTestFile(testId) {
             document.getElementById("welcomeMessage").innerHTML = "<span style='color: tomato;'>Error loading test!</span>";
             document.getElementById("descriptionDisplay").innerHTML = err;
             document.getElementById("finishButton").style.visibility = "hidden";
-            console.error(err);
-        });
-}
-
-function flip() { // For if the site is on a server (or VSCode Live Server)
-    fetch('../tests/' + testId + '360.json')
-        .then(response => response.text())
-        .then(data => {
-            if (flipped)
-                return;
-            dataListPersonal = dataList;
-            dataList = JSON.parse(data);
-            console.log(dataList);
-            loadQuestions();
-            currentQuestion = 1;
-            fadeAllExceptCurrent();
-            flipped = true;
-            toggleElement("flippedExplanation");
-
-            open("#titleDisplay", "_self"); // Return to top of page
-        })
-        .catch(err => {
             console.error(err);
         });
 }

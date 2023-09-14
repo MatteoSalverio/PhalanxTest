@@ -147,7 +147,7 @@
             <p id="descriptionDisplay"></p>
         </div>
         <div id="questions"></div>
-        <button id="finishButton" onclick="calculateScore()"
+        <button id="finishButton" onclick="finish()"
             style="background-color: rgb(51, 164, 116); font-weight: bold;">Finish</button>
     </div>
 
@@ -171,9 +171,9 @@
     <div class="panel" id="flippedExplanation" style="visibility: hidden;">
         <button class="exitButton" onclick="toggleElement('flippedExplanation')">X</button>
         <h1>Next Steps:</h1>
-        <p>You can now hand the device to someone else and they will take a test giving answers about you.
-        </p>
-        <button onclick="toggleElement('flippedExplanation')">Begin</button>
+        <p id="whatToDo">You can now send the link below to someone else and they will take a test giving answers about you.</p>
+        <p id="sendUrlLink" style="font-style: italic; visibility: hidden;">No link to display</p>
+        <button id="copyButton" onclick="copyUrl()">Copy Link</button>
     </div>
 
     <script src="script.js"></script>
