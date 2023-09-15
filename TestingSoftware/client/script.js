@@ -6,8 +6,6 @@ var colors = {
 var questionCount = 1;
 const questionsDiv = document.getElementById("questions");
 var dataList = "";
-var dataListPersonal = "";
-var flipped = false;
 var currentQuestion = 1;
 
 function toggleElement(popupId) { // Enables and disables a panel
@@ -28,7 +26,7 @@ function createQuestion(question, id) { // Displays a question given it's text a
     temp += '<div id="answerSection' + questionCount + '" class="answerSection">';
     temp += "<h2 style='font-weight: normal; float: left; position: relative; top: 20px; left: 20px; color: " + colors.agree + ";'>Agree</h2>";
     // Creating, positioning, and coloring the answer buttons
-    let c = 1;
+    let c = 1; // Labels the answer button with it's index
     for (let i = -2; i < 3; i++) {
         let color = colors.neutral;
         if (i < 0)
@@ -58,6 +56,7 @@ function loadQuestions() {
                 createQuestion(dataList.categories[i].questions[j].question, dataList.categories[i].questions[j].index);
         }
     }
+    // If this is the second test taker
     else {
         for (let i = 0; i < dataList.categories.length; i++) {
             for (let j = 0; j < dataList.categories[i].questions.length; j++)
@@ -147,6 +146,7 @@ function answer(question, answer) {
     document.getElementById("percentage").innerHTML = completion;
     if (question >= questionCount - 1) { // If the user is on the last question
         document.getElementById("question" + (question * 1)).style.opacity = "100%"; // Make the current question not faded
+        open("#finishButton", "_self"); // Scrolls down to the finish button
         return;
     }
     fadeQuestions(); // Fade all questions
@@ -166,12 +166,12 @@ function getPoints(answerIndex, worth) {
         return negativeScores[answerIndex];
 }
 
-let encodedAnswers = "asdfghjkl";
+let encodedAnswers = "asdfghjklqwertyuiopzxcvbnm";
 function decodeAnswer(encodedAnswer) {
     return encodedAnswers.indexOf(encodedAnswer);
 }
-function finish() {
 
+function finish() {
     let urlString = "";
     for (let i = 0; i < dataList.categories.length; i++) {
         for (let j = 0; j < dataList.categories[i].questions.length; j++) {
