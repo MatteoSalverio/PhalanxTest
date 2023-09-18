@@ -254,20 +254,23 @@ function calculateScore() {
             yValues2.push(originalCategoryPercents[i]);
         }
 
-        let chart = new Chart("myChart", {
+        let chart = new Chart("chart", {
             type: "bar",
             data: {
                 labels: xValues,
                 datasets: [
                     {
                         label: "How You Rated Yourself",
-                        backgroundColor: "rgba(55, 100, 200, 1)",
+                        backgroundColor: "rgba(55, 100, 200, 0.75)",
+                        borderColor: "rgba(55, 100, 200, 1)",
+                        borderWidth: 3,
                         data: yValues2
                     },
                     {
                         label: "How Others See You",
-                        backgroundColor: "rgba(55, 200, 130, 1)",
-                        width: 0,
+                        backgroundColor: "rgba(55, 200, 130, 0.75)",
+                        borderColor: "rgba(55, 200, 130, 1)",
+                        borderWidth: 3,
                         data: yValues
                     }
                 ]
@@ -275,7 +278,7 @@ function calculateScore() {
             options: {
                 title: {
                     display: true,
-                    text: "Your Test Results",
+                    text: "Visualize Your Test Results",
                     fontSize: 32
                 },
                 legend: {
@@ -285,8 +288,20 @@ function calculateScore() {
                         fontSize: 24
                     }
                 },
-                axes: {
-                    fontSize: 24
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 20,
+                            autoSkip: false,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 20
+                        }
+                    }]
                 },
                 responsive: true
             }
@@ -300,6 +315,22 @@ function calculateScore() {
         open("#title", "_self"); // Return to top of page
     }
 }
+
+function savePageAsPdf() {
+    var element = document.getElementById('scoringPage');
+    var opt = {
+        margin: 10,
+        filename: 'your-webpage.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { avoid: '.avoid-pagebreak' },
+    };
+
+    // New Promise-based usage:
+    html2pdf().set(opt).from(element).save();
+}
+
 
 // Selects the far left answer choice for each question for testing purposes
 function autoComplete() {

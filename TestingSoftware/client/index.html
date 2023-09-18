@@ -110,7 +110,6 @@
         }
 
         #scoringPage {
-            /*max-width: 700px;*/
             margin: auto;
         }
 
@@ -136,7 +135,7 @@
     </style>
 </head>
 
-<body>
+<body id="body">
     <h1 id="titleDisplay" style="text-decoration: underline;">Test</h1>
     <br><br>
     <div id="mainTestPage" style="visibility: unset;">
@@ -153,8 +152,8 @@
             style="background-color: rgb(51, 164, 116); font-weight: bold;">Finish</button>
     </div>
 
-    <div id="scoringPage" style="visibility: hidden;">
-        <table id="resultsTable">
+    <div class="avoid-pagebreak" id="scoringPage" style="visibility: hidden;">
+        <table class="avoid-pagebreak" id="resultsTable">
             <tr id="headerRow">
                 <th>Trait</th>
                 <th>How You Rated Yourself</th>
@@ -162,10 +161,11 @@
             </tr>
         </table>
         <br><br><br>
-        <div class="chart-container" style="position: relative; width: 100%;">
-            <canvas id="myChart"></canvas>
+        <div class="chart-container" style="position: relative; width: 80%; margin: auto; min-width: 820px;">
+            <canvas id="chart"></canvas>
         </div>
         <br><br>
+        <!--<button style="background-color: darkslateblue; color: aliceblue;" onclick="savePageAsPdf()">Save as PDF</button>-->
     </div>
 
     <div class="panel" id="results" style="visibility: hidden;">
@@ -183,6 +183,7 @@
         <button id="copyButton" onclick="copyUrl()">Copy Link</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 
