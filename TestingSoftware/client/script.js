@@ -223,11 +223,74 @@ function calculateScore() {
                 categoryQuestionCount++;
             }
             // Calculate percentages:
-            categoryPercents[i] = Math.round(((categoryScores[i] + (categoryQuestionCount * 2)) / (categoryQuestionCount * 4)) * 100) + "%";
-            originalCategoryPercents[i] = Math.round(((originalCategoryScores[i] + (categoryQuestionCount * 2)) / (categoryQuestionCount * 4)) * 100) + "%";
+            categoryPercents[i] = Math.round(((categoryScores[i] + (categoryQuestionCount * 2)) / (categoryQuestionCount * 4)) * 100);
+            originalCategoryPercents[i] = Math.round(((originalCategoryScores[i] + (categoryQuestionCount * 2)) / (categoryQuestionCount * 4)) * 100);
+
+            // Set the base color of the cell
+            let cellColor = [220, 140, 150, 0.5];
+            let originalCellColor = [220, 140, 150, 0.5];
+
+            // Set the color of the cell based on the score inside it
+            originalCellColor[0] -= originalCategoryPercents[i] / 2;
+            originalCellColor[1] += originalCategoryPercents[i];
+
+            cellColor[0] -= categoryPercents[i] / 2;
+            cellColor[1] += categoryPercents[i];
+
+            let originalCssColor = "rgba(" + originalCellColor[0] + "," + originalCellColor[1] + "," + originalCellColor[2] + "," + originalCellColor[3] + ")";
+            let cssColor = "rgba(" + cellColor[0] + "," + cellColor[1] + "," + cellColor[2] + "," + cellColor[3] + ")";
+
             // Add results to the table:
-            document.getElementById("resultsTable").innerHTML += "<tr><td>" + dataList.categories[i].name + "</td><td>" + originalCategoryPercents[i] + "</td><td>" + categoryPercents[i] + "</td>";
+            document.getElementById("resultsTable").innerHTML += "<tr><td style='font-weight: bold; background-color: rgba(31,81,225,0.25); color: black;'>" + dataList.categories[i].name + "</td><td style='background-color: " + originalCssColor + ";'>" + originalCategoryPercents[i] + "%" + "</td><td style='background-color: " + cssColor + "'>" + categoryPercents[i] + "%" + "</td>";
         }
+
+        let xValues = [];
+        let yValues = [];
+        let yValues2 = [];
+
+        for (let i = 0; i < dataList.categories.length; i++) {
+            xValues.push(dataList.categories[i].name);
+            yValues.push(categoryPercents[i]);
+            yValues2.push(originalCategoryPercents[i]);
+        }
+
+        let chart = new Chart("myChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [
+                    {
+                        label: "How You Rated Yourself",
+                        backgroundColor: "rgba(55, 100, 200, 1)",
+                        data: yValues2
+                    },
+                    {
+                        label: "How Others See You",
+                        backgroundColor: "rgba(55, 200, 130, 1)",
+                        width: 0,
+                        data: yValues
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Your Test Results",
+                    fontSize: 32
+                },
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        fontSize: 24
+                    }
+                },
+                axes: {
+                    fontSize: 24
+                },
+                responsive: true
+            }
+        });
 
         document.getElementById("titleDisplay").innerHTML = "Your Testing Results:"
         toggleElement("mainTestPage");

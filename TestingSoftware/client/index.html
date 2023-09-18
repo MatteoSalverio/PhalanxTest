@@ -110,20 +110,22 @@
         }
 
         #scoringPage {
-            max-width: 500px;
+            /*max-width: 700px;*/
             margin: auto;
         }
 
         table {
             font-size: 24px;
             margin: auto;
+            border-collapse: collapse
         }
 
         th,
         td {
-            border: solid 2px black;
-            padding: 10px;
+            border: solid 4px black;
+            padding: 20px;
             margin: 0;
+            color: black;
         }
 
         th {
@@ -142,7 +144,7 @@
         <p id="percentage">0%</p>
 
         <div style="margin-bottom: 100px; max-width: 1000px; margin: auto;">
-            <p id="welcomeMessage" style="font-weight: bold;">Welcome to another Rat Lab Test!</p>
+            <p id="welcomeMessage" style="font-weight: bold;">Welcome to another Test!</p>
             <br>
             <p id="descriptionDisplay"></p>
         </div>
@@ -155,10 +157,14 @@
         <table id="resultsTable">
             <tr id="headerRow">
                 <th>Trait</th>
-                <th>Your Results</th>
-                <th>Other Person</th>
+                <th>How You Rated Yourself</th>
+                <th>How Others See You</th>
             </tr>
         </table>
+        <br><br><br>
+        <div class="chart-container" style="position: relative; width: 100%;">
+            <canvas id="myChart"></canvas>
+        </div>
         <br><br>
     </div>
 
@@ -171,11 +177,12 @@
     <div class="panel" id="flippedExplanation" style="visibility: hidden;">
         <button class="exitButton" onclick="toggleElement('flippedExplanation')">X</button>
         <h1>Next Steps:</h1>
-        <p id="whatToDo">You can now send the link below to someone else and they will take a test giving answers about you.</p>
+        <p id="whatToDo">You can now send the link below to someone else and they will take a test giving answers about
+            you.</p>
         <p id="sendUrlLink" style="font-style: italic; visibility: hidden;">No link to display</p>
         <button id="copyButton" onclick="copyUrl()">Copy Link</button>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="script.js"></script>
 </body>
 
