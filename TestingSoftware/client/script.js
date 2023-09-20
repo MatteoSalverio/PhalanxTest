@@ -24,23 +24,23 @@ function createQuestion(question, id) { // Displays a question given it's text a
     temp += '<div id="question' + id + '" class="questionBox">';
     temp += '<h2 class="question">' + question + '</h2>';
     temp += '<div id="answerSection' + questionCount + '" class="answerSection">';
-    temp += "<h2 style='font-weight: normal; float: left; position: relative; top: 20px; left: 20px; color: " + colors.agree + ";'>Agree</h2>";
+    temp += "<h2 style='font-weight: normal; float: left; position: relative; top: 10px; right: 20px; color: " + colors.disagree + ";'>Strongly<br>Disagree</h2>";
+    temp += "<h2 style='font-weight: normal; float: right; position: relative; top: 10px; left: 20px; color: " + colors.agree + ";'>Strongly<br>Agree</h2>";
     // Creating, positioning, and coloring the answer buttons
-    let c = 1; // Labels the answer button with it's index
+    let c = 5; // Labels the answer button with it's index
     for (let i = -2; i < 3; i++) {
         let color = colors.neutral;
-        if (i < 0)
+        if (i > 0)
             color = colors.agree;
-        else if (i > 0)
+        else if (i < 0)
             color = colors.disagree;
         if (i != 0)
             yOffset = Math.abs(i) * -4;
         else
             yOffset = 0;
         temp += createButton(72 + Math.abs(i * 10), color, yOffset, id, c);
-        c++;
+        c--;
     }
-    temp += "<h2 style='font-weight: normal; float: right; position: relative; top: 20px; right: 20px; color: " + colors.disagree + ";'>Disagree</h2>";
     temp += '</div>';
     temp += '</div><hr id="hr' + id + '">';
     questionsDiv.innerHTML += temp;
