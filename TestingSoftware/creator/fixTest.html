@@ -1,0 +1,44 @@
+<!-- Fixes the numbering of questions in a test -->
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        var dataList = null;
+        function onlineStart() {
+            fetch('../tests/' + 'phalanx' + '.json')
+                .then(response => response.text())
+                .then(data => {
+                    dataList = JSON.parse(data);
+                    let q = 1;
+                    for (let i = 0; i < dataList.categories.length; i++) {
+                        for (let j = 0; j < dataList.categories[i].questions.length; j++) {
+                            dataList.categories[i].questions[j].index = q;
+                            q++;
+                        }
+                    }
+                    save();
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
+        function save() {
+            data = JSON.stringify(dataList);
+            downloadToFile(data, "PhalanxTest.json", "text/plain")
+        }
+        const downloadToFile = (content, filename, contentType) => {
+            const a = document.createElement('a');
+            const file = new Blob([content], { type: contentType });
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        };
+
+        onlineStart();
+    </script>
+</body>
+
+</html>

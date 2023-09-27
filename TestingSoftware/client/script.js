@@ -194,22 +194,6 @@ function copyUrl() {
     navigator.clipboard.writeText(document.getElementById("sendUrlLink").innerHTML);
     document.getElementById("copyButton").innerHTML = "Link Copied";
     document.getElementById("copyButton").style.backgroundColor = "rgb(51, 164, 116)";
-    sendEmail("matteosalverio@gmail.com", "Test Results Email", "This is a test, the link is: " + document.getElementById("sendUrlLink").innerHTML);
-}
-
-function sendEmail(toEmail, subject, body) {
-    Email.send({
-        Host: "smtp.gmail.com",
-        Username: "training@phalanxssi.com",
-        Password: "Enter your password",
-        To: 'matteosalverio@gmail.com',
-        From: "training@phalanxssi.com",
-        Subject: subject,
-        Body: body,
-    })
-        .then(function (message) {
-            //alert("Mail has been sent successfully")
-        });
 }
 
 var storedTestingPage = "";

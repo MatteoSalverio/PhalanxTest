@@ -1,0 +1,562 @@
+{
+    "testName": "EPIC Leadership Assessment",
+    "testDescription": "EPIC - Empathetic, Purposeful, Inspirational, and Character-driven<br><br>This is a 10-15 minute assessment that individually tests for a variety of predetermined traits. These traits reflect a person's innate leadership qualities and potential. <br><br> Please answer to the best of your ability and avoid leaving any questions blank, as blank answers will provide an inaccurate score. <br><br> If you have any questions or concerns, please reach out to <br> <a href='mailto:shs7782@g.harvard.edu' style='text-decoration: none;'>shs7782@g.harvard.edu</a>. <br> Thank you! <br><br><br><br> Please select the option that you most agree with for the following statements.",
+    "perspective": "both",
+    "categories": [
+        {
+            "name": "Integrity/Honesty",
+            "questions": [
+                {
+                    "index": 1,
+                    "question": "I am trusted to keep secrets.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They are trusted to keep secrets."
+                },
+                {
+                    "index": 2,
+                    "question": "I lie to get myself out of trouble.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They lie to get themselves out of trouble."
+                },
+                {
+                    "index": 3,
+                    "question": "I believe that honesty is the basis for trust.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They believe that honesty is the basis for trust."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Social",
+            "questions": [
+                {
+                    "index": 4,
+                    "question": "I don't know how to handle myself in a new social situation.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They don't know how to handle themselves in new social situations."
+                },
+                {
+                    "index": 5,
+                    "question": "I get along well with people I have just met.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They get along well with people they have just met."
+                },
+                {
+                    "index": 6,
+                    "question": "I know what makes others tick.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They know what makes others tick."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Constant Improvement",
+            "questions": [
+                {
+                    "index": 7,
+                    "question": "I do just enough work to get by.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They do just enough work to get by."
+                },
+                {
+                    "index": 8,
+                    "question": "I get started quickly on doing a job.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They get started quickly on doing a job."
+                },
+                {
+                    "index": 9,
+                    "question": "I quickly lose interest in the tasks I start.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They quickly lose interest in the tasks they start."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Courageous",
+            "questions": [
+                {
+                    "index": 10,
+                    "question": "I avoid dealing with awkward situations.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They avoid dealing with awkward situations."
+                },
+                {
+                    "index": 11,
+                    "question": "I speak my mind freely even when there might be negative results.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They speak their mind freely even when there might be negative results."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Creativity",
+            "questions": [
+                {
+                    "index": 12,
+                    "question": "I have a vivid imagination.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They have a vivid imagination."
+                },
+                {
+                    "index": 13,
+                    "question": "I have trouble guessing how others will react.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They have trouble guessing how others will react."
+                },
+                {
+                    "index": 14,
+                    "question": "I am full of ideas.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They are full of ideas."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Curiosity",
+            "questions": [
+                {
+                    "index": 15,
+                    "question": "I am never bored.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They are never bored."
+                },
+                {
+                    "index": 16,
+                    "question": "I have few interests.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They have few interests."
+                },
+                {
+                    "index": 17,
+                    "question": "I find it difficult to entertain myself.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They find it difficult to entertain themselves."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Fairness",
+            "questions": [
+                {
+                    "index": 18,
+                    "question": "I would not regret my behavior if I were to take advantage of someone impulsively.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They would not regret their behavior if they were to take advantage of someone impulsively."
+                },
+                {
+                    "index": 19,
+                    "question": "I would feel very bad, for a long time, if I were to steal from someone.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They would feel very bad, for a long time, if they were to steal from someone."
+                },
+                {
+                    "index": 20,
+                    "question": "I try to follow the rules.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They try to follow the rules."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Humor",
+            "questions": [
+                {
+                    "index": 21,
+                    "question": "I try to tease my friends out of their gloomy moods.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They try to tease their friends out of their gloomy moods."
+                },
+                {
+                    "index": 22,
+                    "question": "I try to have fun in all kinds of situations.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They try to have fun in all kinds of situations."
+                },
+                {
+                    "index": 23,
+                    "question": "I do not go out of my way to make others smile or laugh.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They do not go out of their way to make others smile or laugh."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Innovation",
+            "questions": [
+                {
+                    "index": 24,
+                    "question": "I come up with bold plans.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They come up with bold plans."
+                },
+                {
+                    "index": 25,
+                    "question": "I quickly think up new ideas.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They quickly think up new ideas."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Personal Balance",
+            "questions": [
+                {
+                    "index": 26,
+                    "question": "I let myself be taken over by urges to spend or eat too much.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They let themselves be taken over by urges to spend or eat too much."
+                },
+                {
+                    "index": 27,
+                    "question": "I do my tasks only just before they need to be done.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They do their tasks only just before they need to be done."
+                },
+                {
+                    "index": 28,
+                    "question": "I am a highly disciplined person.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They are a highly disciplined person."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Initiative",
+            "questions": [
+                {
+                    "index": 29,
+                    "question": "I get to work at once.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They get to work at once."
+                },
+                {
+                    "index": 30,
+                    "question": "I have difficulty starting tasks.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They have difficulty starting tasks."
+                },
+                {
+                    "index": 31,
+                    "question": "I find it difficult to get down to work.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They find it difficult to get down to work."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Resourceful",
+            "questions": [
+                {
+                    "index": 32,
+                    "question": "I can handle complex problems.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They can handle complex problems."
+                },
+                {
+                    "index": 33,
+                    "question": "I face problems directly.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They face problems directly."
+                },
+                {
+                    "index": 34,
+                    "question": "I am easily discouraged.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They are easily discouraged."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Respectful",
+            "questions": [
+                {
+                    "index": 35,
+                    "question": "I back out at the last moment.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They back out at the last moment."
+                },
+                {
+                    "index": 36,
+                    "question": "I cut conversations short.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They cut conversations short."
+                },
+                {
+                    "index": 37,
+                    "question": "I do a lot in my spare time.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They do a lot in their spare time."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Wisdom",
+            "questions": [
+                {
+                    "index": 38,
+                    "question": "I have a broad outlook on what is going on.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They have a broad outlook on what is going on."
+                },
+                {
+                    "index": 39,
+                    "question": "I am rarely consulted for advice by others.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They are rarely consulted for advice by others."
+                },
+                {
+                    "index": 40,
+                    "question": "I am not good at figuring out what really matters.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They are not good at figuring out what really matters."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Empathy",
+            "questions": [
+                {
+                    "index": 41,
+                    "question": "I don't have a soft side.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They don't have a soft side."
+                },
+                {
+                    "index": 42,
+                    "question": "I treat people as inferiors.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They treat people as inferiors."
+                },
+                {
+                    "index": 43,
+                    "question": "I anticipate the needs of others.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They anticipate the needs of others."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Benevolence",
+            "questions": [
+                {
+                    "index": 44,
+                    "question": "I find it hard to forgive others.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They find it hard to forgive others."
+                },
+                {
+                    "index": 45,
+                    "question": "I am able to be professional with people I dislike.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They are able to be professional with people they dislike."
+                },
+                {
+                    "index": 46,
+                    "question": "I get back at people who insult me.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They get back at people who insult them."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Confidence",
+            "questions": [
+                {
+                    "index": 47,
+                    "question": "I like to act on a whim.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They like to act on a whim."
+                },
+                {
+                    "index": 48,
+                    "question": "I choose my words with care.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They choose their words with care."
+                },
+                {
+                    "index": 49,
+                    "question": "I make rash decisions.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They make rash decisions."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Judgment",
+            "questions": [
+                {
+                    "index": 50,
+                    "question": "I make decisions only after I have all of the facts.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They make decisions only after they have all of the facts."
+                },
+                {
+                    "index": 51,
+                    "question": "I am valued by others for my objectivity.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They are valued by others for their objectivity."
+                },
+                {
+                    "index": 52,
+                    "question": "I don't think about different possibilities when making decisions.",
+                    "worth": "-",
+                    "answer": "none",
+                    "flipped": "They don't think about different possibilities when making decisions."
+                }
+            ],
+            "score": 0
+        },
+        {
+            "name": "Other",
+            "questions": [
+                {
+                    "index": 53,
+                    "question": "I give actionable feedback to my team members that helps them improve their performance.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They give actionable feedback to their team members that helps them improve their performance."
+                },
+                {
+                    "index": 54,
+                    "question": "I give the desired results to my team and let them figure out the best way to do it. I only direct \"how to do something\" if asked or if I see they are having difficulties.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They give the desired results to their team and let them figure out the best way to do it. They only direct \"how to do something\" if asked or if they see their team is having difficulties."
+                },
+                {
+                    "index": 55,
+                    "question": "I care about my team members and I know the members of their family and what their hobbies are.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They care about their team members and they know the members of their family and what their hobbies are."
+                },
+                {
+                    "index": 56,
+                    "question": "I value the perspective of all team members even when it's different from my own. I have a method for letting the team know that I listen to what they say and why I might not choose a particular member's idea or approach.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They value the perspective of all team members even when it's different from their own. They have a method for letting the team know that they listen to what they say and why they might not choose a particular member's idea or approach."
+                },
+                {
+                    "index": 57,
+                    "question": "I keep the team focused on our priorities and I have a method for doing so.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They keep the team focused on their priorities and they have a method for doing so."
+                },
+                {
+                    "index": 58,
+                    "question": "I regularly share relevant information from my manager and senior leaders.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They regularly share relevant information from their manager and senior leaders."
+                },
+                {
+                    "index": 59,
+                    "question": "I have had a meaningful discussion with each of my team members in the last six months about their performance and career development.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They have had a meaningful discussion with each of their team members in the last six months about their performance and career development."
+                },
+                {
+                    "index": 60,
+                    "question": "I communicate clear goals for the team and I have a method for doing so.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They communicate clear goals for the team and they have a method for doing so."
+                },
+                {
+                    "index": 61,
+                    "question": "I have the technical experience(e.g., coding in Tech, selling in Global Business, accounting in Finance) to effectively manage my team. If not, I am taking steps to ensure I learn those skills.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "They have the technical experience (e.g., coding in Tech, selling in Global Business, accounting in Finance) to effectively manage their team. If not, they are taking steps to ensure they learn those skills."
+                },
+                {
+                    "index": 62,
+                    "question": "My team would recommend me to other people in the company to work for or for higher levels of management.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "Their team would recommend them to other people in the company to work for or for higher levels of management."
+                },
+                {
+                    "index": 63,
+                    "question": "My team is satisfied with my overall performance as a manager.",
+                    "worth": "+",
+                    "answer": "none",
+                    "flipped": "Their team is satisfied with their overall performance as a manager."
+                }
+            ],
+            "score": 0
+        }
+    ]
+}
